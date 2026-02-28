@@ -51,15 +51,18 @@
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                @foreach ($storageLocations as $storageLocation)
-                    <div class="w-full lg:w-1/2 p-4">
-                        <h2 class="text-xl font-semibold mb-2">{{ $storageLocation->name }}</h2>
-                        <p class="text-white-600 dark:text-white-400 mb-4">{{ $storageLocation->address }}</p>
-                        <p class="text-white-600 dark:text-white-400 mb-4">Small: {{ $storageLocation->capacity_small }}</p>
-                        <p class="text-white-600 dark:text-white-400 mb-4">Medium: {{ $storageLocation->capacity_medium }}</p>
-                        <p class="text-white-600 dark:text-white-400 mb-4">Large: {{ $storageLocation->capacity_large }}</p>    
-                    </div>
-                    @endforeach
+                <form
+                    method="POST"
+                    action="{{ route('storage-locations.store') }}"
+                    >
+                    @csrf
+                    <input type ="text" id="name" name="name" placeholder="Name" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="text" id="address" name="address" placeholder="Address" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="number" id="capacity_small" name="capacity_small" placeholder="Small Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="number" id="capacity_medium" name="capacity_medium" placeholder="Medium Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="number" id="capacity_large" name="capacity_large" placeholder="Large Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"> 
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300">Create Storage Location</button>
+                </form>
             </main>
         </div>
 

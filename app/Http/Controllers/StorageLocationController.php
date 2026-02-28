@@ -22,7 +22,7 @@ class StorageLocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('storage-locations-create');
     }
 
     /**
@@ -30,7 +30,16 @@ class StorageLocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'capacity_small' => 'required|integer',
+            'capacity_medium' => 'required|integer',
+            'capacity_large' => 'required|integer',
+        ]);
+        StorageLocation::create($validatedData);
+        return redirect()->route('storage-locations.index');
     }
 
     /**
