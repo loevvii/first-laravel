@@ -15,4 +15,5 @@ Route::post('/StorageLocations/Store', [StorageLocationController::class, 'store
 Route::get('/StorageLocations/{id}', [StorageLocationController::class, 'show'])->name('storage-locations.show');
 Route::get('/StorageLocations/{id}/Edit', [StorageLocationController::class, 'edit'])->name('storage-locations.edit');
 Route::post('/StorageLocations/{id}/Update', [StorageLocationController::class, 'update'])->name('storage-locations.update');
+Route::post('/StorageLocations/{id}/Delete', [StorageLocationController::class, 'destroy'])->name('storage-locations.destroy');
 

@@ -86,6 +86,8 @@ class StorageLocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $storageLocation = StorageLocation::findOrFail($id);
+        $storageLocation->delete();
+        return redirect()->route('storage-locations.index');
     }
 }

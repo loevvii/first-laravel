@@ -61,8 +61,11 @@
                     <input type ="number" id="capacity_small" value="{{ $storageLocation->capacity_small }}" name="capacity_small" placeholder="Small Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
                     <input type ="number" id="capacity_medium" value="{{ $storageLocation->capacity_medium }}" name="capacity_medium" placeholder="Medium Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
                     <input type ="number" id="capacity_large" value="{{ $storageLocation->capacity_large }}" name="capacity_large" placeholder="Large Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"> 
-                    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300">Update Storage Location</button>
+                    <button type="submit" class="w-full bg-blue-500 text-black py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300">Update Storage Location</button>
                 </form>
+                <form method="POST" action="{{ route('storage-locations.destroy', $storageLocation->id) }}">
+                    @csrf
+                    <button type="submit" class="w-full bg-red-500 text-black py-2 px-4 rounded-md hover:bg-red-600 transition-colors duration-300 mt-4">Delete Storage Location</button>
             </main>
         </div>
 
