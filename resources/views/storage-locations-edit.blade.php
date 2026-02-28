@@ -51,15 +51,18 @@
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div>
-                        <h2 class="text-xl font-semibold mb-2">{{ $storageLocation->name }}</h2>
-                        <p class="text-white-600 dark:text-white-400 mb-4">{{ $storageLocation->address }}</p>
-                        <p class="text-white-600 dark:text-white-400 mb-4">Small: {{ $storageLocation->capacity_small }}</p>
-                        <p class="text-white-600 dark:text-white-400 mb-4">Medium: {{ $storageLocation->capacity_medium }}</p>
-                        <p class="text-white-600 dark:text-white-400 mb-4">Large: {{ $storageLocation->capacity_large }}</p>
-                        <a href="{{ route('storage-locations.edit',$storageLocation->id) }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                            Edit </a>   
-                    </div>
+                <form
+                    method="POST"
+                    action="{{ route('storage-locations.update', $storageLocation->id) }}"
+                    >
+                    @csrf
+                    <input type ="text" id="name" value="{{ $storageLocation->name }}" name="name" placeholder="Name" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="text" id="address" value="{{ $storageLocation->address }}" name="address" placeholder="Address" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="number" id="capacity_small" value="{{ $storageLocation->capacity_small }}" name="capacity_small" placeholder="Small Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="number" id="capacity_medium" value="{{ $storageLocation->capacity_medium }}" name="capacity_medium" placeholder="Medium Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+                    <input type ="number" id="capacity_large" value="{{ $storageLocation->capacity_large }}" name="capacity_large" placeholder="Large Capacity" class="w-full mb-4 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"> 
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300">Update Storage Location</button>
+                </form>
             </main>
         </div>
 

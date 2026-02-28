@@ -58,7 +58,9 @@ class StorageLocationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $storageLocation = StorageLocation::findOrFail($id);
+        // dd($storageLocation);
+        return view('storage-locations-edit', compact('storageLocation'));
     }
 
     /**
@@ -66,7 +68,17 @@ class StorageLocationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request);
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'address' => 'required|string|max:255',
+                'capacity_small' => 'required|integer',
+                'capacity_medium' => 'required|integer',
+                'capacity_large' => 'required|integer',
+            ]);
+            $storageLocation = StorageLocation::findOrFail($id);
+            $storageLocation->update($validatedData);
+            return redirect()->route('storage-locations.show', $storageLocation->id);
     }
 
     /**
