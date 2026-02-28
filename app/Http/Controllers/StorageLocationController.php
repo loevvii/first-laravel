@@ -47,7 +47,10 @@ class StorageLocationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $storageLocation = StorageLocation::findOrFail($id);
+        // dd($storageLocation);
+        return view('storage-locations-show', compact('storageLocation'));
+
     }
 
     /**

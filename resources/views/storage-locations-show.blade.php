@@ -51,16 +51,13 @@
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                @foreach ($storageLocations as $storageLocation)
-                    <div class="w-full lg:w-1/2 p-4">
+                <div>
                         <h2 class="text-xl font-semibold mb-2">{{ $storageLocation->name }}</h2>
                         <p class="text-white-600 dark:text-white-400 mb-4">{{ $storageLocation->address }}</p>
                         <p class="text-white-600 dark:text-white-400 mb-4">Small: {{ $storageLocation->capacity_small }}</p>
                         <p class="text-white-600 dark:text-white-400 mb-4">Medium: {{ $storageLocation->capacity_medium }}</p>
-                        <p class="text-white-600 dark:text-white-400 mb-4">Large: {{ $storageLocation->capacity_large }}</p> 
-                        <a href="{{ route('storage-locations.show', $storageLocation->id) }}" class="text-blue-500 hover:underline">View Details</a>
+                        <p class="text-white-600 dark:text-white-400 mb-4">Large: {{ $storageLocation->capacity_large }}</p>    
                     </div>
-                    @endforeach
             </main>
         </div>
 
